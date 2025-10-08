@@ -63,6 +63,45 @@ Even with 0 years of experience, a base salary (~₹25,792) is offered.
 
 The model shows a strong positive correlation (R² ≈ 0.95).
 
+
+## 📊 Visualizations
+### 1️⃣ Distribution & Skewness
+
+Plots the histogram + KDE curve for each numeric column:
+
+Years of Experience
+
+Salary
+
+Age
+
+sns.histplot(df[column], kde=True, color='skyblue')
+
+
+📈 Helps identify whether the data is left/right skewed or normal.
+
+### 2️⃣ Bar Plot
+
+Displays average values for 3 columns (YearsExperience, Salary, and Age).
+
+bar_data = df[['YearsExperience', 'Salary', 'Age']].mean()
+sns.barplot(x=bar_data.index, y=bar_data.values, palette='viridis')
+
+
+📊 Shows the relative magnitude of features.
+
+### 3️⃣ Heatmap (Correlation)
+
+Checks the relationship between numeric columns.
+
+corr = df[['YearsExperience', 'Salary', 'Age']].corr()
+sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
+
+
+🔥 Key finding:
+
+YearsExperience and Salary have a strong positive correlation (≈ 0.97) — ideal for linear regression.
+
 ## 🧾 Future Improvements
 
 Include additional factors like education, job role, and location.
@@ -70,3 +109,4 @@ Include additional factors like education, job role, and location.
 Try Polynomial Regression for non-linear trends.
 
 Deploy as a web app using Streamlit or Flask.
+
